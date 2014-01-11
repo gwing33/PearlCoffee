@@ -13,6 +13,7 @@ var ProductSchema = new Schema({
   description: String,
   price: Number,
   shipping: String,
+  online_sale: Boolean,
   
   url: String,
   
