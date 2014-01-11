@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var expressLayouts = require('express-ejs-layouts');
 
 var mongoose = require("mongoose");
 var config   = require("./config");
@@ -19,7 +20,12 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
+
 app.set('view engine', 'ejs');
+app.set('layout', '_layout');
+app.set("layout extractScripts", true);
+app.use(expressLayouts);
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
