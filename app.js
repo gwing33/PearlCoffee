@@ -9,7 +9,8 @@ var mongoose = require("mongoose");
 var config   = require("./config");
 
 var routes = require('./routes');
-var user = require('./routes/user');
+var product = require('./routes/product');
+
 var http = require('http');
 var path = require('path');
 
@@ -46,7 +47,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/about', routes.about);
+app.get('/contact', routes.contact);
+app.get('/products', product.list);
+app.get('/product/', product.list);
+app.get('/product/:id', product.item);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
