@@ -58,6 +58,7 @@ app.get('/contact', routes.contact);
 app.get('/products', product.list);
 app.get('/product/', product.list);
 app.get('/product/:id', product.item);
+app.get('/sync/products', product.sync);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

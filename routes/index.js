@@ -12,12 +12,18 @@ exports.index = function(req, res){
  * GET about.
  */
 exports.about = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('about', {
+    title: 'Pearl Coffee',
+    description: 'Pearl Coffee, local, great coffee'
+  });
 };
 
 /*
  * GET contact.
  */
 exports.contact = function(req, res){
-  res.render('index', { title: 'Express' });
+  res.render('contact', {
+    title: 'Pearl Coffee',
+    description: 'Pearl Coffee, local, great coffee'
+  });
 };
