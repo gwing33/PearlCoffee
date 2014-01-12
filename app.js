@@ -11,6 +11,7 @@ var config   = require("./config");
 
 var routes = require('./routes');
 var product = require('./routes/product');
+var sync = require('./routes/sync');
 
 var http = require('http');
 var path = require('path');
@@ -58,7 +59,7 @@ app.get('/contact', routes.contact);
 app.get('/products', product.list);
 app.get('/product/', product.list);
 app.get('/product/:id', product.item);
-app.get('/sync/products', product.sync);
+app.get('/sync/products', sync.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
