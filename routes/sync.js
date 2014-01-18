@@ -18,6 +18,7 @@ var product_count = 1;
  * GET Sync Products from Square.
  */
 exports.index = function(req, res) {
+  // Removes all Cateogries, starts from scratch
   Category.find({}, function(err, docs) {
     for(var i = 0; i < docs.length; i++) {
       docs[i].remove();
