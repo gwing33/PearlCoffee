@@ -1,3 +1,5 @@
+var Category = require('../models/categoriesModel');
+
 /*
  * GET home page.
  */
