@@ -63,11 +63,10 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/about', routes.about);
 app.get('/contact', routes.contact);
-app.get('/products', product.list);
-app.get('/product/', product.list);
+app.get('/product/:cat_slug', product.list);
 app.get('/product/:cat_slug/:slug', product.item);
 app.get('/sync/products', sync.index);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), app.get('ipaddr'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

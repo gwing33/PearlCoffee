@@ -15,5 +15,8 @@ exports.item = function(req, res){
  * GET All Products.
  */
 exports.list = function(req, res){
-  res.render('products', { title: 'Express', description: 'asdf' });
+  Category.findOne( { slug: req.params.cat_slug }, function(err, category) {
+    console.log(category);
+    res.render('products', { title: 'Express', description: 'asdf', category: category });
+  });
 };

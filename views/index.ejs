@@ -4,7 +4,7 @@
 <ul>
 <% for(var i=0; i<cateogires.length; i++) {%>
   <li>
-    <%= cateogires[i].name %>
+    <a href='/product/<%= cateogires[i].slug %>'><%= cateogires[i].name %></a>
     <ul>
       <% for(var j=0; j<cateogires[i].products.length; j++) {%>
         <li>

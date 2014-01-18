@@ -1,1 +1,8 @@
-products...
+<h2><%= category.name %></h2>
+<ul>
+  <% for(var j=0; j < category.products.length; j++) {%>
+    <li>
+      <a href='/product/<%= category.slug %>/<%= category.products[j].slug %>'><%= category.products[j].name %></a>
+    </li>
+  <% } %>
+</ul>
