@@ -20,8 +20,13 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+console.warn(ipaddress, port);
+
+app.set('ipaddr', ipaddress);
+app.set('port', port);
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'ejs');
