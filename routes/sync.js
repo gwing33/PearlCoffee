@@ -6,11 +6,13 @@ var url = require('url');
 var httpAgent = require('http-agent');
 var jsdom = require('jsdom');
 var jQuery = require('jQuery');
+var slug = require('slug');
 
 var categories = [];
 var products = [];
 var base_url = 'squareup.com';
 var html = 'Starting...<br>';
+
 
 var product_count = 1;
 
@@ -24,9 +26,12 @@ exports.index = function(req, res) {
       docs[i].remove();
     }
   });
-
+  
+  var square_url = 'https://' + base_url + '/market/pearl-coffee';
+  custom_log('Scrapping for all pages: <a target="_blank" href="' + square_url + '">' + square_url + '</a>');
+  
   jsdom.env({
-    url: 'https://' + base_url + '/market/pearl-coffee',
+    url: square_url,
     scripts: ["http://code.jquery.com/jquery.js"],
     done: function (errors, window) {
       if(errors) {
@@ -36,15 +41,16 @@ exports.index = function(req, res) {
           var urls = [];
           var $ = window.$;
           
-          $('.menu-category').each(function() {
+          $('.item-category').each(function() {
             var el = $(this);
-            var title = el.find('.menu-category-name').text();
+            var title = el.find('.module-name').text();
+            var cat_slug = slug(title);
 
-            el.find('.menu-item a').each(function() {
-              urls.push( $(this).attr('href').substr(1) );
+            el.find('.item-element a').each(function() {
+              urls.push( $(this).attr('href').replace('https://squareup.com/','') );
             });
 
-            var cat = new Category({ name: title, products: [] });
+            var cat = new Category({ name: title, slug: cat_slug, products: [] });
             cat.save();
           });
 
@@ -61,6 +67,7 @@ exports.index = function(req, res) {
 };
 
 function collectProducts(res, urls) {
+  console.log(urls);
   var agent = httpAgent.create('squareup.com', urls);
   
   custom_log('Scraping ' + urls.length + ' pages from ' + agent.host);
@@ -112,10 +119,11 @@ function getProductData(agent) {
 
     var section = $('#content');
 
-    var cat_name = section.find('.item-category .category-info').text();
+    var cat_name = $('.category-info').first().text();
 
     product.name = section.find('.item-name').text();
     product.title = product.name + ' - ' + cat_name;
+    product.slug = slug(product.name);
     product.description = utf8.encode( section.find('.item-description').html() );
     product.price = section.find('.item-amount-price').text();
     

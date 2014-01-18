@@ -6,7 +6,7 @@ var ObjectId = Schema.ObjectId;
 
 var CategoriesSchema = new Schema({
   name: String,
-
+  slug: String,
   products: [ProductSchema]
 });
 

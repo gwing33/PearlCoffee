@@ -1,10 +1,17 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 
+<ul>
 <% for(var i=0; i<cateogires.length; i++) {%>
-   <li><%= cateogires[i].name %></li>
+  <li>
+    <%= cateogires[i].name %>
+    <ul>
+      <% for(var j=0; j<cateogires[i].products.length; j++) {%>
+        <li>
+          <a href='/product/<%= cateogires[i].slug %>/<%= cateogires[i].products[j].slug %>'><%= cateogires[i].products[j].name %></a>
+        </li>
+      <% } %>
+    </ul>
+  </li>
 <% } %>
-
-<ol>
-  <li>Design</li>
-</ol>
+</ul>

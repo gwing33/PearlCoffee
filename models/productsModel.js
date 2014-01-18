@@ -6,6 +6,7 @@ var ObjectId = Schema.ObjectId;
 var ProductSchema = new Schema({
   name: String,
   title: String,
+  slug: String,
   description: String,
   price: String,
   shipping: String,

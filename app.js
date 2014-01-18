@@ -60,7 +60,7 @@ app.get('/about', routes.about);
 app.get('/contact', routes.contact);
 app.get('/products', product.list);
 app.get('/product/', product.list);
-app.get('/product/:id', product.item);
+app.get('/product/:cat_slug/:slug', product.item);
 app.get('/sync/products', sync.index);
 
 http.createServer(app).listen(app.get('port'), function(){
