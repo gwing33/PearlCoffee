@@ -4,9 +4,16 @@ var Category = require('../models/categoriesModel');
  * GET home page.
  */
 exports.index = function(req, res){
-  res.render('index', {
-    title: 'Pearl Coffee',
-    description: 'Pearl Coffee, local, great coffee'
+  Category.find({}, , function(err, docs) {
+    if(err) {
+      docs = {};
+    }
+
+    res.render('index', {
+      title: 'Pearl Coffee',
+      description: 'Pearl Coffee, local, great coffee',
+      cateogires: docs
+    });
   });
 };
 

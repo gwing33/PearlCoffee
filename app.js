@@ -1,3 +1,4 @@
+#!/bin/env node
 
 /**
  * Module dependencies.
@@ -62,7 +63,6 @@ app.get('/product/', product.list);
 app.get('/product/:id', product.item);
 app.get('/sync/products', sync.index);
 
-var server = http.createServer(app);
-server.listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
