@@ -4,9 +4,9 @@ var Category = require('../models/categoriesModel');
  * GET home page.
  */
 exports.index = function(req, res){
-  Category.find({}, , function(err, docs) {
+  Category.find({}, function(err, docs) {
     if(err) {
-      docs = {};
+      docs = [];
     }
 
     res.render('index', {
