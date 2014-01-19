@@ -1,0 +1,82 @@
+<h1>Sync Products</h1>
+
+<form id='enter_code'>
+  <legend>Enter Code to start sync</legend>
+  <input type='text' id='code' name='code'>
+</form>
+
+<h3>Output Log</h3>
+<ul id='log'>
+</ul>
+
+
+
+<script src="/js/vendor/jquery-1.10.2.min.js"></script>
+<script>
+var ul, code;
+$(function() {
+  ul = $('#log');
+
+  $('#enter_code').on('submit', function(e) {
+    e.preventDefault();
+    
+    code = $(this).find('#code').val();
+    drawLi('Resetting Categories');
+    
+    $.ajax({
+      url: '/sync/products/categories',
+      data: {
+        code: code
+      },
+      success: function(data) {
+        data.log.push('Found ' + data.urls.length + ' products');
+        data.log.push('Collecting Products...');
+
+        drawLog(data.log);
+
+        for(var i = 0; i < data.urls.length; i++) {
+          getProduct(data.urls[i]);
+        }
+      },
+      error: function(grr, blah, doh) {
+        var json = JSON.parse(grr.responseText);
+        json.log.push(blah + ': ' + doh);
+        
+        drawLog(json.log);
+      }
+    });
+  });
+});
+
+function getProduct(url) {
+  var log = [];
+
+  $.ajax({
+    url: '/sync/products/url',
+    data: {
+      url: url
+    },
+    success: function(data) {
+      console.log(data);
+      drawLog(data.log);
+    },
+    error: function() {
+      var json = JSON.parse(grr.responseText);
+      json.log.push('product ' + blah + ': ' + doh);
+      
+      drawLog(json.log);
+    }
+  });
+  console.log(url);
+}
+
+function drawLog(log) {
+  for(var i = 0; i < log.length; i++) {
+    drawLi(log[i]);
+  }
+}
+
+function drawLi(text) {
+  ul.append('<li>' + text + '</li>'); 
+}
+</script>

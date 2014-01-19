@@ -66,6 +66,8 @@ app.get('/contact', routes.contact);
 app.get('/product/:cat_slug', product.list);
 app.get('/product/:cat_slug/:slug', product.item);
 app.get('/sync/products', sync.index);
+app.get('/sync/products/categories', sync.getCategories);
+app.get('/sync/products/url', sync.getProduct);
 
 http.createServer(app).listen(app.get('port'), app.get('ipaddr'), function(){
   console.log('Express server listening on port ' + app.get('port'));
