@@ -1,17 +1,24 @@
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<ul class='categories cf'>
+<% for(var i=0; i<cateogires.length; i++) { %>
+  <% if(cateogires[i].name != "Tea") { %>
+    <li>
+      <h4>
+        <a href='/product/<%= cateogires[i].slug %>'><%= cateogires[i].name %></a>
+      </h4>
 
-<ul>
-<% for(var i=0; i<cateogires.length; i++) {%>
-  <li>
-    <a href='/product/<%= cateogires[i].slug %>'><%= cateogires[i].name %></a>
-    <ul>
-      <% for(var j=0; j<cateogires[i].products.length; j++) {%>
-        <li>
-          <a href='/product/<%= cateogires[i].slug %>/<%= cateogires[i].products[j].slug %>'><%= cateogires[i].products[j].name %></a>
-        </li>
-      <% } %>
-    </ul>
-  </li>
+      <ul class='products cf'>
+        <% for(var j=0; j<cateogires[i].products.length; j++) {%>
+          <li>
+            <a href='/product/<%= cateogires[i].slug %>/<%= cateogires[i].products[j].slug %>'>
+              <img src='<%= cateogires[i].products[j].image_urls[0] %>'>
+              <span>
+                <%= cateogires[i].products[j].name %>
+              </span>
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </li>
+  <% } %>
 <% } %>
 </ul>

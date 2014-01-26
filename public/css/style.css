@@ -3,5 +3,156 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
-  color: #00b7ff;
+  color: #0071b1;
+}
+.cf {
+  *zoom: 1;
+}
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+header,
+.container {
+  width: 1060px;
+  margin: 0 auto;
+}
+header {
+  text-align: justify;
+}
+header ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+header li {
+  display: inline;
+}
+header li a {
+  border-radius: 50%;
+  width: 171px;
+  background: #414143;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  height: 171px;
+  line-height: 171px;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+header li a:hover {
+  background: #0071b1;
+}
+header li .logo {
+  background: none;
+  width: 250px;
+  border-radius: none;
+  margin-left: 0;
+}
+header li .logo:hover {
+  background: none;
+}
+header li .logo img {
+  width: 100%;
+  vertical-align: middle;
+}
+header span {
+  display: inline-block;
+  width: 100%;
+}
+.container {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.categories,
+.products {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.categories img,
+.products img {
+  width: 100%;
+}
+.categories h4 a,
+.products h4 a {
+  text-decoration: none;
+  color: #414143;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.products {
+  margin-bottom: 80px;
+}
+.products li {
+  text-align: center;
+  width: 250px;
+  float: left;
+  margin-left: 20px;
+}
+.products li:nth-child(4n+1) {
+  margin-left: 0;
+  clear: left;
+}
+.products span {
+  line-height: 26px;
+  text-align: center;
+  margin-bottom: 30px;
+  display: block;
+}
+.gallery {
+  width: 700px;
+  float: left;
+  margin-bottom: 80px;
+}
+.gallery img {
+  width: 100%;
+}
+.product-info {
+  width: 340px;
+  float: left;
+  margin-left: 20px;
+}
+.purchase {
+  text-align: center;
+  margin-top: 30px;
+}
+.purchase .price {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.buy-online {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #0071b1;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.breadcrumb {
+  padding: 8px 15px 8px 0;
+  margin-bottom: 20px;
+  list-style: none;
+  border-radius: 4px;
+}
+.breadcrumb > li {
+  display: inline-block;
+}
+.breadcrumb > li + li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+.breadcrumb > .active {
+  color: #999;
 }

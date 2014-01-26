@@ -1,1 +1,26 @@
-<h2><%= category.products[0].name %></h2>
+<ul class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/product/<%= category.slug %>/"><%= category.name %></a></li>
+  <li class="active"><%= category.products[0].name %></li>
+</ul>
+
+<div class='product-item'>
+  <div class='gallery'>
+    <img src='<%= category.products[0].image_urls[0] %>'>
+  </div>
+
+  <div class='product-info'>
+    <h1><%= category.products[0].name %></h1>
+
+    <div class='description'>
+      <%- category.products[0].description %>
+    </div>
+    
+    <div class='purchase'>
+      <span class='price'>
+        <%= category.products[0].price %>
+      </span>
+      <a href='<% category.products[0].online_sale %>' class='buy-online'>Buy Online</a>
+    </div>
+  </div>
+</div>

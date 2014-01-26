@@ -1,5 +1,140 @@
+blue = #0071B1
+
+// General Styles
 body
   padding: 50px
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
-  color: #00B7FF
+  color: blue
+.cf
+  *zoom: 1
+  &:before, &:after 
+    content: " "
+    display: table
+  &:after
+    clear: both
+  
+
+// Layout Styles
+header, .container
+  width: 1060px
+  margin: 0 auto
+
+header
+  text-align: justify
+  ol
+    list-style: none
+    margin: 0
+    padding: 0
+    display: inline
+  li
+    display: inline
+    a
+      border-radius: 50%
+      width: 171px
+      background: #414143
+      display: inline-block
+      color: #fff
+      text-decoration: none
+      margin-left: 20px
+      height: 171px
+      line-height: 171px
+      text-align: center
+      font-size: 1.5em
+      font-weight: bold
+      letter-spacing: 2px
+      &:hover
+        background: blue
+    .logo
+      background: none
+      width: 250px
+      border-radius: none
+      margin-left: 0
+      &:hover
+        background: none
+    .logo img
+      width: 100%
+      vertical-align: middle
+  span
+    display: inline-block
+    width: 100%
+
+.container
+  // border-top: 3px solid #414143
+  margin-top: 20px
+  padding-top: 20px
+
+
+// Page Specific Styles
+.categories, .products
+  list-style: none
+  margin: 0
+  padding: 0
+  img
+    width: 100%
+  h4
+    a
+      text-decoration: none
+      color: #414143
+      font-weight: bold
+      font-size: 1.2em
+
+.products
+  margin-bottom: 80px
+  li
+    text-align: center
+    width: 250px
+    float: left
+    margin-left: 20px
+    &:nth-child(4n+1)
+      margin-left: 0
+      clear: left
+  span
+    line-height: 26px
+    text-align: center
+    margin-bottom: 30px
+    display: block
+
+.gallery
+  width: 700px
+  float: left
+  margin-bottom: 80px
+  img
+    width: 100%
+
+.product-info
+  width: 340px
+  float: left
+  margin-left: 20px
+
+.purchase
+  text-align: center
+  margin-top: 30px
+  .price
+    font-weight: bold
+    margin-right: 5px
+.buy-online
+  display: inline-block
+  padding: 8px 15px
+  background-color: blue
+  color: #fff
+  font-weight: bold
+  font-size: 1.2em
+  text-decoration: none
+  border-radius: 4px
+
+
+.breadcrumb
+  padding: 8px 15px 8px 0
+  margin-bottom: 20px
+  list-style: none
+  border-radius: 4px
+  > li
+    display: inline-block
+
+  > li + li:before
+    padding: 0 5px
+    color: #ccc
+    content: "/\00a0"
+  > .active
+    color: #999

@@ -5,8 +5,9 @@ var Category = require('../models/categoriesModel');
  */
 exports.item = function(req, res){
 
-  Category.findOne({ slug: req.params.cat_slug, "products.slug": req.params.slug }, {'products.$': 1}, function(err, category) {
-    res.render('product', { title: 'Express', description: 'asdf', category: category });
+  Category.findOne({ slug: req.params.cat_slug, "products.slug": req.params.slug }, {'name': 1, 'slug': 1, 'products.$': 1}, function(err, category) {
+    console.log(category);
+    res.render('product', { title: category.products[0].title, description: category.products[0].description, category: category });
   });
   
 };
