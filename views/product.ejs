@@ -20,7 +20,7 @@
       <span class='price'>
         <%= category.products[0].price %>
       </span>
-      <a href='<% category.products[0].online_sale %>' class='buy-online'>Buy Online</a>
+      <a target='_blank' href='<%= category.products[0].url %>' class='buy-online'>Buy Online</a>
     </div>
   </div>
 </div>
